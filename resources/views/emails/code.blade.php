@@ -1,0 +1,1 @@
+本邮件来之轻博客by coder_wmj ,本次注册验证码是: <span style="color: green">{{$code}}</span>
