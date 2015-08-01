@@ -2,17 +2,17 @@
 <style>
     #chats .comment .right
     {
-        width: 750px !important;
+
     }
 </style>
 <div id="chats">
 @foreach($comments as $comment)
 
     <div class="comment clearfix" data-id="{{$comment->id}}">
-        <div class="left" >
+        <div class="left col-sm-2  col-md-1 col-lg-1" >
             <a href="{{ url('home/'.$comment->sender->id)}}"><img class="thumbnail" src="{{$comment->sender->portrait?$comment->sender->portrait:'/image/portraits/default.jpg'}} "></a>
         </div>
-        <div class="right" >
+        <div class="right col-sm-10 col-md-11 col-lg-11" >
 
             <p><a href="{{ url('home/'.$comment->sender->id)}}">{{$comment->sender->name}}</a> :
                 @if($comment->receiver_id)

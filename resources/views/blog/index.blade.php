@@ -19,6 +19,16 @@
         #blogs .content image {
            max-width: 100%;
         }
+        #blogs  .panel-heading >h3
+        {
+            display: inline-block;
+            max-width: 300px;
+            text-overflow: ellipsis;
+             white-space: nowrap;
+            overflow: hidden;
+            vertical-align: middle;
+            margin: 0;
+        }
 
     </style>
     <div id="blogs">
@@ -26,8 +36,8 @@
         @foreach($blogs as $blog)
 
             <div  data-id="{{$blog->id}}"  class="blog panel  panel-default">
-                <div class="panel-heading clearfix"><a href="/blog/{{$blog->id}}">{{$blog->title}}</a>&nbsp;&nbsp; 浏览 <span class="badge">{{$blog->scans}}</span>&nbsp;&nbsp; </span> <span>{{$blog->created_at}}</span>
-                    <div class="operation" ><a  class="btn btn-success" target="_blank" href="/blog/{{$blog->id}}">阅读全文</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-info" target="_blank" href="/ucenter/blog/{{$blog->id}}/edit">编辑</a>&nbsp;&nbsp;&nbsp;&nbsp; <a class="drop-btn btn btn-danger" href="javascript:void(0)">删除</a></div></div>
+                <div class="panel-heading clearfix"><h3> <a href="/blog/{{$blog->id}}.html">{{$blog->title}}</a></h3>&nbsp;&nbsp; 浏览 <span class="badge">{{$blog->scans}}</span>&nbsp;&nbsp; </span> <span>{{$blog->created_at}}</span>
+                    <div class="operation" ><a  class="btn btn-success" target="_blank" href="/blog/{{$blog->id}}.html">阅读全文</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-info" target="_blank" href="/ucenter/blog/{{$blog->id}}/edit">编辑</a>&nbsp;&nbsp;&nbsp;&nbsp; <a class="drop-btn btn btn-danger" href="javascript:void(0)">删除</a></div></div>
                 <div  class="panel-body"  >
                     <div class="content"  style="max-height: 300px; overflow: hidden">
                         {!!$blog->content!!}

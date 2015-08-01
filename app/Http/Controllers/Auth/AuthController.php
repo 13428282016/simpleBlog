@@ -58,6 +58,7 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
+        isset($data['portrait'])||$data['portrait']=null;
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

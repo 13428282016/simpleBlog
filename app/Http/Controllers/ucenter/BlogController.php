@@ -21,7 +21,7 @@ class BlogController extends Controller
     {
         //
         $user=$guard->user();
-        $rows=2;
+        $rows=5;
         $blogs=$user->blogs()->orderBy('created_at','desc')->paginate($rows);
         return view('blog.index',['blogs'=>$blogs]);
     }
@@ -55,7 +55,7 @@ class BlogController extends Controller
         $blog->user_id= $guard->user()->id;
         if($blog->save())
         {
-            return redirect('blog/'.$blog->id);
+            return redirect('blog/'.$blog->id.'.html');
         }
         else
         {
@@ -73,7 +73,7 @@ class BlogController extends Controller
      */
     public function show(Guard $guard,$id)
     {
-      return redirect('blog/'.$id);
+      return redirect('blog/'.$id.'.html');
     }
 
     /**

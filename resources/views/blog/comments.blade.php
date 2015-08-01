@@ -1,60 +1,5 @@
 
-<style>
-   #comments  .comment img
-    {
-        width: 60px;
-        height: 60px;;
-    }
-   #comments  .comment .left
-    {
-      float: left;
-        width: 60px;
-        height: 60px;
-
-    }
-   #comments  .comment .right
-    {
-        float: right;
-        width: 890px;
-
-    }
-   #comments .operation
-   {
-       float: right;
-   }
-   #comments .comment
-    {
-        padding: 15px 0;
-        border-bottom: 1px solid #A1FF00;
-    }
-   #comments a+a{
-       margin-left: 10px;
-   }
-    #comments .reply-container
-    {
-        padding: 10px 0;
-        float: left;
-        width: 100%;
-    }
-   #comments .reply-container .operation
-   {
-       text-align: right;
-       padding: 15px 0 0 0;
-   }
-   #comments .reply-container .operation button+button
-   {
-       margin-left: 15px;
-   }
-    #look-chats-dlg .modal-content
-    {
-        height: 600px;
-        overflow-y: auto;
-        padding: 20px;
-
-
-    }
-</style>
-
+<link rel="stylesheet" href="{{asset('css/blog/comment.min.css')}}">
 <div id="comments-container">
 
     <div>
@@ -66,10 +11,10 @@
     </div>
     @foreach($comments as $comment)
         <div class="comment clearfix" data-id="{{$comment->id}}">
-            <div class="left" >
+            <div class="left  col-sm-2  col-md-1 col-lg-1 " >
                 <a href="{{ url('home/'.$comment->sender->id)}}"><img class="thumbnail" src="{{$comment->sender->portrait?$comment->sender->portrait:'/image/portraits/default.jpg'}} "></a>
             </div>
-            <div class="right" >
+            <div class="right col-sm-9 col-md-11 col-lg-11 " >
 
                 <p><a href="{{ url('home/'.$comment->sender->id)}}">{{$comment->sender->name}}</a> :
                     @if($comment->receiver_id)
@@ -194,7 +139,7 @@
 
             container=comment.getCommentsContainer();
             container.html(data);
-            convertUrl(pagesID,arguments.callee);
+            BLOGCOMMENT.convertUrl(pagesID,arguments.callee);
         }
       openReplyDialog=function(source)
       {

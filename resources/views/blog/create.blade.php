@@ -1,9 +1,9 @@
 @extends('layout.ucenter')
 
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12 ">
+
+
+
                 <div class="panel panel-default">
                     <div class="panel-heading">发微博</div>
                     <div class="panel-body">
@@ -45,9 +45,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
+
     <script type="text/javascript" src="{{asset('js/ckeditor/ckeditor.js')}}"> </script>
     <script type="text/javascript"> CKEDITOR.replace('content'); </script>
 @endsection

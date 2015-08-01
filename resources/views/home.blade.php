@@ -21,19 +21,19 @@
         }
         #home
         {
-            width: 1210px;
+            /*width: 1210px;*/
             margin: 0 auto;
         }
 
         #home .left
         {
-            float: left;
-            width: 200px;
+            /*float: left;*/
+            /*width: 200px;*/
         }
         #home .right
         {
-            float: right;
-            width: 1000px;
+            /*float: right;*/
+            /*width: 1000px;*/
         }
         #portrait {
             text-align: center;;
@@ -46,7 +46,9 @@
 
         #stat ul{
             list-style: none;
-            padding: 0;;
+            padding: 0;
+            margin: 0 auto;
+            width: 170px;
 
         }
         #stat ul li{
@@ -59,60 +61,82 @@
             text-align: center;;
             line-height: 35px;
         }
+        #blogs .panel-heading > h3
+        {
+            display: inline-block;
+            max-width: 300px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            vertical-align: middle;
+            margin: 0;
+        }
+
     </style>
 
-    <div id="home" class="clearfix">
+    <div id="home" class="clearfix container-fluid">
 
-        <div class="left  panel  panel-default ">
-            <div class="panel-heading ">
-                用户信息
-                </div>
-            <div  class="panel-body"  >
-               <div id="portrait">
-                   <a href="{{url('home/'.$homer->id)}}"><img class="thumbnail center" src="{{$homer->portrait or '/image/portraits/default.jpg'}}"/></a>
-               </div>
-                <div style="text-align: center;margin: 0px  0 10px  0;">
-                    <a href="{{url('home/'.$homer->id)}}">{{$homer->name}}</a>
-                </div>
-                <div id="stat">
-                    <ul class="clearfix">
-                        <li>
-                            <div><span class="badge">{{$homer->visits}}</span></div>
-                            <div>访问</div>
-                        </li>
-                        <li>  <div><span class="badge">{{$homer->blogs}}</span></div>
-                            <div>博客</div></li>
-                    </ul>
-                </div>
-
-                </div>
-
-
-        </div>
-        <div class="right">
-            <div id="blogs">
-
-                @foreach($blogs as $blog)
-
-                    <div  data-id="{{$blog->id}}"  class="blog panel  panel-default">
-                        <div class="panel-heading clearfix"><a href="/blog/{{$blog->id}}">{{$blog->title}}</a>&nbsp;&nbsp; 浏览 <span class="badge">{{$blog->scans}}</span>&nbsp;&nbsp; </span> <span>{{$blog->created_at}}</span>
-                            <div class="operation" ><a  class="btn btn-success" target="_blank" href="/blog/{{$blog->id}}">阅读全文</a>@if($isSelf)&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-info" target="_blank" href="/ucenter/blog/{{$blog->id}}/edit">编辑</a>&nbsp;&nbsp;&nbsp;&nbsp; <a class="drop-btn btn btn-danger" href="javascript:void(0)">删除</a>@endif</div></div>
-                        <div  class="panel-body"  >
-                            <div class="content"  style="max-height: 300px; overflow: hidden">
-                                {!!$blog->content!!}
-                            </div>
-
+        <div class="row">
+            <div class=" col-sm-12 col-md-3 col-lg-2 ">
+                <div class="left  panel  panel-default">
+                    <div class="panel-heading ">
+                        用户信息
+                    </div>
+                    <div  class="panel-body"  >
+                        <div id="portrait">
+                            <a href="{{url('home/'.$homer->id)}}"><img class="thumbnail center" src="{{$homer->portrait or '/image/portraits/default.jpg'}}"/></a>
                         </div>
+                        <div style="text-align: center;margin: 0px  0 10px  0;">
+                            <a href="{{url('home/'.$homer->id)}}">{{$homer->name}}</a>
+                        </div>
+                        <div id="stat">
+                            <ul class="clearfix">
+                                <li>
+                                    <div><span class="badge">{{$homer->visits}}</span></div>
+                                    <div>访问</div>
+                                </li>
+                                <li>  <div><span class="badge">{{$homer->blogs}}</span></div>
+                                    <div>博客</div></li>
+                            </ul>
+                        </div>
+
                     </div>
 
 
-                @endforeach
+                </div>
             </div>
 
-            <div style="text-align: center">
-                <?php echo  $blogs->render()?>
-            </div>
+             <div class="col-sm-12 col-md-9 col-lg-10">
+
+                 <div class="right ">
+                     <div id="blogs">
+
+                         @foreach($blogs as $blog)
+
+                             <div  data-id="{{$blog->id}}"  class="blog panel  panel-default">
+                                 <div class="panel-heading clearfix"><h3><a href="/blog/{{$blog->id}}.html">{{$blog->title}}</a></h3>&nbsp;&nbsp; 浏览 <span class="badge">{{$blog->scans}}</span>&nbsp;&nbsp; </span> <span>{{$blog->created_at}}</span>
+                                     <div class="operation" ><a  class="btn btn-success" target="_blank" href="/blog/{{$blog->id}}.html">阅读全文</a>@if($isSelf)&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-info" target="_blank" href="/ucenter/blog/{{$blog->id}}/edit">编辑</a>&nbsp;&nbsp;&nbsp;&nbsp; <a class="drop-btn btn btn-danger" href="javascript:void(0)">删除</a>@endif</div></div>
+                                 <div  class="panel-body"  >
+                                     <div class="content"  style="max-height: 300px; overflow: hidden">
+                                         {!!$blog->content!!}
+                                     </div>
+
+                                 </div>
+                             </div>
+
+
+                         @endforeach
+                     </div>
+
+                     <div style="text-align: center">
+                         <?php echo  $blogs->render()?>
+                     </div>
+                 </div>
+             </div>
+
+
         </div>
+
     </div>
 
 

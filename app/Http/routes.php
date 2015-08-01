@@ -38,6 +38,8 @@ Route::group(['middleware'=>'auth'],function(){
 });
 
 Route::get('/', function (\Illuminate\Auth\Guard $guard) {
+
+
     return view('welcome');
 });
 

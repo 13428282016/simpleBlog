@@ -59,7 +59,8 @@ class UploadController extends Controller {
 
             }catch (FileException $e)
             {
-                return ['status'=>0];
+              return ['status'=>0,'error'=>$e->getMessage()];
+
             }
 
         }
